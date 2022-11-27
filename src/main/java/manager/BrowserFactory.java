@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 import static io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver;
 
-public class BrowserFactory {
+public final class BrowserFactory {
     public static WebDriver create(DriverType type, String url) {
 
         WebDriver driver = null;
@@ -20,6 +20,7 @@ public class BrowserFactory {
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
                 driver.get(url);
+
                 return driver;
 
             case FIREFOX:
