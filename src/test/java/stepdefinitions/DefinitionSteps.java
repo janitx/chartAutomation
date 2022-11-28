@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 import org.junit.AfterClass;
+import org.openqa.selenium.WebElement;
 import pages.ChartPage;
 
 public class DefinitionSteps {
@@ -23,11 +24,12 @@ public class DefinitionSteps {
 
     @After
     public void closeBrowser() {
-        chartPage.close();
-        //Debug
+        // Debug
         for (String element : chartPage.getTextTooltipList())
             System.out.println(element);
-        System.out.println("SIZE =" + chartPage.getTextTooltipList().size());
+        System.out.println("SIZE = " + chartPage.getTextTooltipList().size());
+
+        chartPage.close();
     }
 
     @AfterClass

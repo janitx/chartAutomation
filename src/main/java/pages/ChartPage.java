@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,44 +68,17 @@ public class ChartPage extends BasePage {
             actions.moveToElement(element).perform();
 
             try {
+                new WebDriverWait(driver, 2).until(ExpectedConditions.elementToBeClickable(By.xpath(TOOLTIP_TEXT)));
                 String text = driver.findElement(By.xpath(TOOLTIP_TEXT)).getText();
                 textTooltipList.add(text);
 
             } catch (Exception e) {
 
-                clickInLoop(element);
-
+                System.out.println(e.getMessage());
             }
 
         }
-    }
 
-    /**
-     * The function is called if the element is not stable
-     *
-     * @param element - unstable element
-     */
-    private void clickInLoop(WebElement element) {
-
-        int index = 0;
-
-        while (index < 5) {
-            actions.moveToElement(element).perform();
-            try {
-                String text = driver.findElement(By.xpath(TOOLTIP_TEXT)).getText();
-                textTooltipList.add(text);
-                break;
-
-            } catch (Exception e) {
-
-                System.err.format(e.getMessage());
-            }
-
-            index++;
-
-            waitForElement(TOOLTIP_TEXT);
-
-        }
     }
 
 
