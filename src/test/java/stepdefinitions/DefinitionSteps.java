@@ -24,12 +24,13 @@ public class DefinitionSteps {
 
     @After
     public void closeBrowser() {
+        chartPage.close();
+
         // Debug
         for (String element : chartPage.getTextTooltipList())
             System.out.println(element);
         System.out.println("SIZE = " + chartPage.getTextTooltipList().size());
 
-        chartPage.close();
     }
 
     @AfterClass

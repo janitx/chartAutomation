@@ -68,7 +68,6 @@ public class ChartPage extends BasePage {
             actions.moveToElement(element).perform();
 
             try {
-                new WebDriverWait(driver, 2).until(ExpectedConditions.elementToBeClickable(By.xpath(TOOLTIP_TEXT)));
                 String text = driver.findElement(By.xpath(TOOLTIP_TEXT)).getText();
                 textTooltipList.add(text);
 
