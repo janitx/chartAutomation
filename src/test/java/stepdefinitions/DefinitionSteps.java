@@ -4,8 +4,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
+import io.cucumber.java.en.When;
 import org.junit.AfterClass;
-import org.openqa.selenium.WebElement;
 import pages.ChartPage;
 
 public class DefinitionSteps {
@@ -13,12 +13,20 @@ public class DefinitionSteps {
 
     @Given("User opens site")
     public void openPage() {
+        chartPage.openChartPage();
+    }
+
+    @When("User confirms cookies")
+    public void confirmCookies() {
         chartPage.clickOnCookiesWindow();
     }
 
     @Then("User checks tooltips")
     public void checkTooltips() {
         chartPage.turnOffScales();
+        chartPage.scrollToUp();
+        chartPage.clickOnChartContextMenuButton();
+        chartPage.clickOnViewInFullScreenLink();
         chartPage.clickOnDotChart();
     }
 

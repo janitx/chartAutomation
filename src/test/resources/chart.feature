@@ -6,5 +6,5 @@ Feature: Verify Chart functionality
 
   Scenario: Check Chart
     Given User opens site
+    When User confirms cookies
     Then User checks tooltips
-
