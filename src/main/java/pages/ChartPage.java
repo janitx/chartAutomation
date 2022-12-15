@@ -16,6 +16,7 @@ public class ChartPage extends BasePage {
     private static final String ALLOW_ALL_COOKIES_BUTTON = "//a[@id='CybotCookiebotDialogBodyButtonAccept']";
     public static final String HIGHSOFT_EMPLOYEES_DOT = "path.highcharts-point.highcharts-color-2";
     private static final String TOOLTIP_TEXT = "g.highcharts-label.highcharts-tooltip.highcharts-color-2 text";
+
     private static final String CHART_CONTEXT_MENU_BUTTON = "//button[contains(@aria-label,'View chart menu, Highcharts and Highsoft timeline')]";
     private static final String VIEW_IN_FULL_SCREEN_LINK = "//*[text()=\"View in full screen\"]";
     private List<WebElement> toolTipsList = new ArrayList<>();
@@ -67,8 +68,9 @@ public class ChartPage extends BasePage {
         for (WebElement element : setCollection) {
             actions.moveToElement(element).perform();
 
+
             try {
-                String text = driver.findElement(By.cssSelector(TOOLTIP_TEXT)).getText();
+                String text = driver.findElement(By.cssSelector(TOOLTIP_TEXT)).getText().trim();
                 textTooltipList.add(text);
 
             } catch (Exception e) {
