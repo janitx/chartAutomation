@@ -1,6 +1,6 @@
 package pages;
 
-import constants.Constant;
+import constants.Constants;
 import manager.BrowserFactory;
 import org.openqa.selenium.*;
 
@@ -13,7 +13,7 @@ public class BasePage {
     }
 
     public void openChartPage() {
-        this.driver = BrowserFactory.create(Constant.BROWSER, Constant.URL);
+        this.driver = BrowserFactory.create(Constants.BROWSER, Constants.URL);
     }
 
     public void clickOnElement(String el) {
@@ -25,6 +25,13 @@ public class BasePage {
             executor.executeScript("arguments[0].click();", driver.findElement(By.xpath(el)));
         }
 
+    }
+
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            return BrowserFactory.create(Constants.BROWSER, Constants.URL);
+        }
+        return driver;
     }
 
     public void close() {

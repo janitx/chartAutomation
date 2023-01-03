@@ -9,9 +9,9 @@ import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 import static io.github.bonigarcia.wdm.WebDriverManager.firefoxdriver;
 
 public final class BrowserFactory {
-    public static WebDriver create(DriverType type, String url) {
+    static WebDriver driver;
 
-        WebDriver driver = null;
+    public static WebDriver create(DriverType type, String url) {
 
         switch (type) {
 
@@ -35,4 +35,6 @@ public final class BrowserFactory {
 
     private BrowserFactory() {
     }
+
+
 }
