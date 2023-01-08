@@ -15,7 +15,6 @@ import pages.ChartPage;
 
 import java.util.*;
 
-
 public class DefinitionSteps {
 
     private static ArrayList<String> tooltips = new ArrayList<>();
@@ -25,12 +24,7 @@ public class DefinitionSteps {
 
     private static ChartPage chartPage = new ChartPage();
 
-    @Given("User reads file")
-    public static void readFile() {
-        csvModels = CsvToJavaReader.read(Constants.PATH_CSV);
-    }
-
-    @When("User opens site")
+    @Given("User opens site")
     public void openPage() {
         chartPage.openChartPage();
     }
@@ -40,20 +34,15 @@ public class DefinitionSteps {
         chartPage.clickOnCookiesWindow();
     }
 
-    @When("User reads tooltips")
-    public void readsTooltips() {
+    @Then("User checks tooltips")
+    public void checksTooltips() {
+
+        csvModels = CsvToJavaReader.read(Constants.PATH_CSV);
         chartPage.turnOffScales();
         chartPage.scrollToUp();
         chartPage.clickOnChartContextMenuButton();
         chartPage.clickOnViewInFullScreenLink();
         chartPage.clickOnDotChart();
-    }
-
-
-    @Then("User checks tooltips")
-    public void checksTooltips() {
-
-        csvModels = CsvToJavaReader.read(Constants.PATH_CSV);
 
         for (String str : chartPage.getTextTooltipList()) {
             tooltips.add(str.trim());
@@ -69,7 +58,6 @@ public class DefinitionSteps {
 
         for (int i = 0; i < csvStrings.size() - 1; i++) {
             softAssertions.assertThat(tooltips.get(i)).as("Tooltips are not equal").isEqualTo(csvStrings.get(i));
-
         }
 
     }

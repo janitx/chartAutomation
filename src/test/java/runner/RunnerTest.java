@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "listener.CheckTooltipsListener"},
+        plugin = {"pretty", "html:report.html", "attributes.CustomAttributeReporter", "listener.CheckTooltipsListener"},
         features = "src/test/resources/chart.feature",
         glue = "stepdefinitions"
 )

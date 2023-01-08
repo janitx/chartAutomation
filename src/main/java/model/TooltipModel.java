@@ -1,7 +1,6 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Data;
 
 
 @JsonPropertyOrder({"date", "year", "name", "numberOfEmployee"})
